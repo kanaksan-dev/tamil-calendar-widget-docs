@@ -1,8 +1,9 @@
-exports.handler = async (event, context) => {
-  const { date } = event.queryStringParameters || {};
+export default async function handler(req, res) {
+  const { date } = req.query;
   
-  // The hidden ImageKit URL
-  const imageUrl = 'https://ik.imagekit.io/kanaksan/kanaksan/dailysheets/2022/022022/22022022.jpg';
+  // Use environment variable or fallback
+  const imageUrl = process.env.DEMO_IMAGE_URL || 
+    'https://ik.imagekit.io/kanaksan/kanaksan/dailysheets/2022/022022/22022022.jpg';
 
   try {
     const response = await fetch(imageUrl);
