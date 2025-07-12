@@ -45,7 +45,7 @@ export default {
     },
     
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yourusername/tamil-calendar-widget' }
+      { icon: 'github', link: 'https://github.com/kanaksan-dev/tamil-calendar-widget-docs' }
     ],
     
     footer: {

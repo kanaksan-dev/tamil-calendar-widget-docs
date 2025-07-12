@@ -78,15 +78,15 @@ To use this widget, you need access to our Tamil Calendar API:
 ::: code-group
 
 ```bash [npm]
-npm install @yourname/tamil-calendar-widget
+npm install @kanaksan/tamil-calendar-widget
 ```
 
 ```bash [yarn]
-yarn add @yourname/tamil-calendar-widget
+yarn add @kanaksan/tamil-calendar-widget
 ```
 
 ```bash [pnpm]
-pnpm add @yourname/tamil-calendar-widget
+pnpm add @kanaksan/tamil-calendar-widget
 ```
 
 :::
@@ -94,7 +94,7 @@ pnpm add @yourname/tamil-calendar-widget
 ## Import in Your Project
 
 ```jsx
-import { TamilCalendarWidget } from '@yourname/tamil-calendar-widget';
+import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 ```
 
 ## Get API Access
@@ -123,7 +123,7 @@ Once you have your API URL, using the Tamil Calendar Widget is simple:
 
 ```jsx
 import React from 'react';
-import { TamilCalendarWidget } from '@yourname/tamil-calendar-widget';
+import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 
 function App() {
   return (
@@ -145,7 +145,7 @@ export default App;
 
 ```jsx
 import React from 'react';
-import { TamilCalendarWidget } from '@yourname/tamil-calendar-widget';
+import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 
 function App() {
   const handleLoad = () => {
@@ -172,7 +172,7 @@ function App() {
 
 ```jsx
 import React, { useState } from 'react';
-import { TamilCalendarWidget } from '@yourname/tamil-calendar-widget';
+import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 
 function CalendarApp() {
   const [selectedDate, setSelectedDate] = useState(
