@@ -1,12 +1,14 @@
 ---
 layout: home
+title: Tamil Calendar Widget - React Component Documentation
+titleTemplate: :title
 
 hero:
   name: Tamil Calendar Widget
   text: Beautiful React Component
   tagline: Display Tamil daily calendar sheets with ease
   image:
-    src: /hero-image.png
+    src: /22022022.jpg
     alt: Tamil Calendar Widget
   actions:
     - theme: brand
