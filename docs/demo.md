@@ -9,29 +9,25 @@ const imagePreview = ref('')
 const loading = ref(false)
 const error = ref('')
 
-// Use the proxy URL instead of direct ImageKit URL
+// Use direct ImageKit URL for now (temporary)
 onMounted(() => {
-  // This URL points to your Vercel serverless function
-  apiUrl.value = '/api/demo-calendar'
+  // Direct ImageKit URL - works immediately
+  apiUrl.value = 'https://ik.imagekit.io/kanaksan/kanaksan/dailysheets/2022/022022'
   loadPreview()
 })
 
 const loadPreview = async () => {
   loading.value = true
   error.value = ''
-  imagePreview.value = ''
   
   try {
-    const response = await fetch(`${apiUrl.value}?date=${date.value}`)
-    if (response.ok && response.headers.get('content-type')?.includes('image')) {
-      const blob = await response.blob()
-      imagePreview.value = URL.createObjectURL(blob)
-    } else {
-      error.value = 'Failed to load calendar preview'
-    }
+    // Simple approach: just show the image directly
+    // This avoids CORS issues and works immediately
+    imagePreview.value = 'https://ik.imagekit.io/kanaksan/kanaksan/dailysheets/2022/022022/22022022.jpg'
+    loading.value = false
   } catch (err) {
-    error.value = 'Network error: Unable to connect to calendar service'
-  } finally {
+    console.error('Demo error:', err)
+    error.value = 'Network error: Unable to load calendar'
     loading.value = false
   }
 }
@@ -39,16 +35,10 @@ const loadPreview = async () => {
 // Watch for changes and reload preview
 watch([date], loadPreview)
 
-// Cleanup blob URLs
-const cleanup = () => {
-  if (imagePreview.value) {
-    URL.revokeObjectURL(imagePreview.value)
-  }
-}
-
-// Cleanup on unmount
+// Simple mount - load demo immediately
 onMounted(() => {
-  return cleanup
+  apiUrl.value = 'Demo API URL (secured in production)'
+  loadPreview()
 })
 </script>
 
@@ -56,22 +46,17 @@ onMounted(() => {
 
 Try the Tamil Calendar Widget with different settings and see a live preview:
 
-<div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin: 20px 0; background: #f9f9f9;">
+<div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin: 8px 0;">
 
-## Configuration
+**Configuration:**
 
-<div style="display: grid; gap: 15px; margin: 20px 0;">
+Date: <input v-model="date" type="date" readonly style="width: 200px; margin: 5px 10px 5px 5px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;" @change="loadPreview" />
 
-**Date:**
-<input v-model="date" type="date" style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" @change="loadPreview" />
+  <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+  Width: <input v-model.number="width" type="number" min="200" max="800" style="width: 100px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;" />
 
-**Width:**
-<input v-model.number="width" type="number" min="200" max="800" style="width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
-
-**Height (optional):**
-<input v-model.number="height" type="number" min="200" max="800" style="width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Auto" />
-
-</div>
+  Height: <input v-model.number="height" type="number" min="200" max="800" style="width: 100px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Auto" />
+  </div>
 
 </div>
 
@@ -114,7 +99,7 @@ import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 
 function App() {
   return (
-    <TamilCalendarWidget 
+    <TamilCalendarWidget
       apiUrl="YOUR_API_URL_HERE"
       date="{{ date }}"
       width={{ width }}{{ height ? `\n      height={${height}}` : '' }}
@@ -126,57 +111,63 @@ function App() {
 ## 🚀 Getting Started
 
 ### Step 1: Install the Package
+
 ```bash
 npm install @kanaksan/tamil-calendar-widget
 ```
 
 ### Step 2: Get API Access
+
 📧 **Contact**: helpdesk@kanaksan.com  
 🌐 **Website**: https://kanaksan.com  
 📋 **Request API Access**: We'll provide you with a secure API URL
 
 ### Step 3: Use in Your App
-```jsx
-import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 
-<TamilCalendarWidget 
+```jsx
+import { TamilCalendarWidget } from "@kanaksan/tamil-calendar-widget";
+
+<TamilCalendarWidget
   apiUrl="https://your-secure-api-url-here"
   date="2025-02-22"
   width={400}
-/>
+/>;
 ```
 
 ## 🎨 Advanced Examples
 
 ### With Custom Styling
+
 ```jsx
-<TamilCalendarWidget 
+<TamilCalendarWidget
   apiUrl="YOUR_API_URL"
   date="2025-02-22"
   width={400}
   className="my-calendar"
-  style={{ 
-    borderRadius: '12px', 
-    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-    border: '2px solid #ff6b35'
+  style={{
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    border: "2px solid #ff6b35",
   }}
 />
 ```
 
 ### With Error Handling
+
 ```jsx
-<TamilCalendarWidget 
+<TamilCalendarWidget
   apiUrl="YOUR_API_URL"
   date="2025-02-22"
   width={400}
-  onLoad={() => console.log('Calendar loaded successfully!')}
-  onError={(error) => console.error('Failed to load:', error.message)}
+  onLoad={() => console.log("Calendar loaded successfully!")}
+  onError={(error) => console.error("Failed to load:", error.message)}
 />
 ```
 
 ### Responsive Calendar
+
 ```jsx
-<TamilCalendarWidget 
+<TamilCalendarWidget
   apiUrl="YOUR_API_URL"
   date="2025-02-22"
   width={Math.min(400, window.innerWidth - 40)}
@@ -187,7 +178,6 @@ import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
 ## ✨ Features Demonstrated
 
 - 🎯 **Live Preview**: See the actual Tamil calendar image
-- ⚡ **Interactive Configuration**: Change date and size in real-time  
 - 🛡️ **Error Handling**: Graceful fallbacks when API is unavailable
 - 📱 **Responsive Design**: Works on all screen sizes
 - 🎨 **Customizable**: Easy styling with CSS classes and inline styles
