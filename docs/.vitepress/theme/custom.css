@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.fancy-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 2.8rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtext {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #555;
+  margin-top: 0.5rem;
+  display: inline-block;
+  line-height: 1.6;
+}
+
+.hero-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 0.5rem;
+  display: inline-block;
+  letter-spacing: 0.2px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.google-style {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+
+.g-red {
+  color: #DB4437;
+}
+
+.g-blue {
+  color: #4285F4;
+}
+
+.g-yellow {
+  color: #F4B400;
+}
+
+.g-green {
+  color: #0F9D58;
+}

@@ -4,9 +4,9 @@ title: Tamil Calendar Widget - React Component Documentation
 titleTemplate: :title
 
 hero:
-  name: Tamil Calendar Widget
-  text: Beautiful React Component
-  tagline: Display Tamil daily calendar sheets with ease
+  name: '<span class="fancy-title">Tamil Calendar Widget</span>'
+  text: '<span class="hero-subtext">Elegant Tamil Calendar Integration for React</span>'
+  --tagline: '<span class="hero-tagline">Display Tamil daily calendar sheets with ease</span>'
   image:
     src: /22022022.jpg
     alt: Tamil Calendar Widget
@@ -60,139 +60,5 @@ function App() {
 To use this widget, you need access to our Tamil Calendar API:
 
 📧 **Contact**: contact@kanaksan.com  
-🌐 **Website**: https://kanaksan.com  
-📋 **Request Access**: [API Access Form](https://kanaksan.com/api-access)
-
-# ===================================
-# docs/guide/installation.md
-# Installation
-
-## Prerequisites
-
-- React 16.8+ or 17+ or 18+
-- Node.js 14+
-- npm or yarn
-
-## Install the Package
-
-::: code-group
-
-```bash [npm]
-npm install @kanaksan/tamil-calendar-widget
-```
-
-```bash [yarn]
-yarn add @kanaksan/tamil-calendar-widget
-```
-
-```bash [pnpm]
-pnpm add @kanaksan/tamil-calendar-widget
-```
-
-:::
-
-## Import in Your Project
-
-```jsx
-import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
-```
-
-## Get API Access
-
-Before you can use the widget, you need API access:
-
-1. **Contact us** at contact@kanaksan.com
-2. **Provide your use case** and expected usage
-3. **Receive your API URL** with authentication token
-4. **Start using the widget**
-
-::: tip
-We offer different API tiers:
-- **Free**: 100 requests/day
-- **Pro**: 1000 requests/day + historical data
-- **Enterprise**: Unlimited + custom features
-:::
-
-# ===================================
-# docs/guide/quick-start.md
-# Quick Start
-
-## Basic Usage
-
-Once you have your API URL, using the Tamil Calendar Widget is simple:
-
-```jsx
-import React from 'react';
-import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
-
-function App() {
-  return (
-    <div>
-      <h1>My Tamil Calendar App</h1>
-      <TamilCalendarWidget 
-        apiUrl="https://api.kanaksan.com/calendar?token=your_token"
-        date="2025-07-12"
-        width={400}
-      />
-    </div>
-  );
-}
-
-export default App;
-```
-
-## With Error Handling
-
-```jsx
-import React from 'react';
-import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
-
-function App() {
-  const handleLoad = () => {
-    console.log('Calendar loaded successfully!');
-  };
-
-  const handleError = (error) => {
-    console.error('Failed to load calendar:', error.message);
-  };
-
-  return (
-    <TamilCalendarWidget 
-      apiUrl="https://api.kanaksan.com/calendar?token=your_token"
-      date="2025-07-12"
-      width={400}
-      onLoad={handleLoad}
-      onError={handleError}
-    />
-  );
-}
-```
-
-## Dynamic Date
-
-```jsx
-import React, { useState } from 'react';
-import { TamilCalendarWidget } from '@kanaksan/tamil-calendar-widget';
-
-function CalendarApp() {
-  const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split('T')[0]
-  );
-
-  return (
-    <div>
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-      />
-      
-      <TamilCalendarWidget 
-        apiUrl="https://api.kanaksan.com/calendar?token=your_token"
-        date={selectedDate}
-        width={400}
-      />
-    </div>
-  );
-}
-```
+🌐 **Website**: https://docs.kanaksan.com  
+📋 **Request Access**: [API Access Form](https://docs.kanaksan.com/api-access)
